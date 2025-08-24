@@ -1,1 +1,16 @@
 *.csv
+.env
+.ipynb_checkpoints
+__pycache__/
+
+# Ignore all generated data
+/data/*
+
+# Keep empty placeholders so folders exist in the repo
+!/data/.gitkeep
+!/data/00_raw/.gitkeep
+!/data/01_processed/.gitkeep
+!/data/02_final/.gitkeep
+
+# (Optional) keep docs
+!/data/README.md
