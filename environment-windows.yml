@@ -1,0 +1,19 @@
+name: wid_env
+channels:
+  - conda-forge
+  - nodefaults  # only use conda-forge
+dependencies:
+  - python=3.11
+  - pandas>=2.3
+  - pyarrow        # Parquet engine for pandas
+  - numpy
+  - scipy
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - jupyterlab
+  - ipykernel
+  - ipywidgets     # nice to have in notebooks
+  - pip            # include only if you need pip packages
+  # - pip:
+  #     - some-pip-only-package==1.2.3
