@@ -9,6 +9,7 @@ dependencies:
   - numpy
   - scipy
   - scikit-learn
+  - sgp4>=2.23
   - matplotlib
   - seaborn
   - jupyterlab
