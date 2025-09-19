@@ -5,7 +5,7 @@
 This project analyzes **orbital congestion and conjunction risk** in **low Earth orbit (LEO)** using open-source datasets from the **18th Space Defense Squadron (SDS)** and the **Space-Track Satellite Catalog (SATCAT)**. With satellite numbers skyrocketing (3,371 in 2020 → 15,330 in 2025), our work highlights where space traffic is concentrated, how debris impacts safety, and what risks exist for active satellites.
 
 **Meet the Team**
-[!team-photo](https://github.com/dezertdweller/Cosmic-Insights/blob/main/assets/team.png)
+![team-photo](https://github.com/dezertdweller/Cosmic-Insights/blob/main/assets/team.png)
 
 ---
 
@@ -16,6 +16,9 @@ This project analyzes **orbital congestion and conjunction risk** in **low Earth
 * **Daily close approaches** number in the thousands; \~14% of payload-payload events have miss distances <1 km.
 * **Risk is payload-driven** – active satellites are most vulnerable.
 
+EDA
+![eda](https://github.com/dezertdweller/Cosmic-Insights/blob/main/assets/eda.png)
+![eda](https://github.com/dezertdweller/Cosmic-Insights/blob/main/assets/eda-2.png)
 ---
 
 ## 🛠️ Tools & Approach
@@ -23,6 +26,9 @@ This project analyzes **orbital congestion and conjunction risk** in **low Earth
 * **Data**: TLEs (Elsets) + SATCAT metadata
 * **Tech**: Python (pandas, NumPy, SGP4), Tableau
 * **Workflow**: Ingestion → Cleaning → Orbital Density Analysis → Conjunction Risk Modeling
+
+Conjunction Modeling
+![modeling](https://github.com/dezertdweller/Cosmic-Insights/blob/main/assets/conjunction.png)
 
 ---
 
