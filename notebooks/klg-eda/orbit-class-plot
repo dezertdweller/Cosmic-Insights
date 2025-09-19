@@ -1,0 +1,94 @@
+from matplotlib.patches import Circle
+
+orbit_classes = ['LEO', 'HEO', 'MEO', 'GEO', 'Unknown']
+counts = [24872, 2473, 887, 877, 31]
+percentages = [85.35, 8.49, 3.04, 3.01, 0.11]
+
+# Colors for each orbit class
+colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#7f7f7f']
+
+# Create figure and axis
+fig, ax = plt.subplots(1, 2, figsize=(16, 8))
+
+# First subplot: Earth with orbit rings
+# Draw Earth
+earth = Circle((0, 0), 1, color='#2F6DF7', alpha=0.9)
+ax[0].add_patch(earth)
+
+# Orbit radii (normalized)
+leo_radius = 1.2
+meo_radius = 1.6
+geo_radius = 2.0
+
+# Draw orbit rings
+leo_ring = Circle((0, 0), leo_radius, fill=False, color=colors[0], linestyle='-', linewidth=2, alpha=0.7)
+meo_ring = Circle((0, 0), meo_radius, fill=False, color=colors[2], linestyle='-', linewidth=2, alpha=0.7)
+geo_ring = Circle((0, 0), geo_radius, fill=False, color=colors[3], linestyle='-', linewidth=2, alpha=0.7)
+
+ax[0].add_patch(leo_ring)
+ax[0].add_patch(meo_ring)
+ax[0].add_patch(geo_ring)
+
+# Add scatter points to represent satellites
+np.random.seed(42)  # For reproducible random points
+
+# LEO points
+leo_theta = np.random.uniform(0, 2*np.pi, int(counts[0]/100))  # Scaling down for visualization
+leo_x = leo_radius * np.cos(leo_theta)
+leo_y = leo_radius * np.sin(leo_theta)
+ax[0].scatter(leo_x, leo_y, color=colors[0], s=5, alpha=0.6, label='LEO')
+
+# MEO points
+meo_theta = np.random.uniform(0, 2*np.pi, int(counts[2]/20))  # Scaling down
+meo_x = meo_radius * np.cos(meo_theta)
+meo_y = meo_radius * np.sin(meo_theta)
+ax[0].scatter(meo_x, meo_y, color=colors[2], s=5, alpha=0.6, label='MEO')
+
+# GEO points
+geo_theta = np.random.uniform(0, 2*np.pi, int(counts[3]/20))  # Scaling down
+geo_x = geo_radius * np.cos(geo_theta)
+geo_y = geo_radius * np.sin(geo_theta)
+ax[0].scatter(geo_x, geo_y, color=colors[3], s=5, alpha=0.6, label='GEO')
+
+# HEO points (elliptical orbits)
+heo_theta = np.random.uniform(0, 2*np.pi, int(counts[1]/50))  # Scaling down
+heo_r = leo_radius + (geo_radius - leo_radius) * np.random.random(len(heo_theta))
+heo_x = heo_r * np.cos(heo_theta)
+heo_y = heo_r * np.sin(heo_theta)
+ax[0].scatter(heo_x, heo_y, color=colors[1], s=5, alpha=0.6, label='HEO')
+
+# Unknown points
+unknown_theta = np.random.uniform(0, 2*np.pi, int(counts[4]/5))  # Scaling down
+unknown_r = leo_radius + (geo_radius - leo_radius) * np.random.random(len(unknown_theta))
+unknown_x = unknown_r * np.cos(unknown_theta)
+unknown_y = unknown_r * np.sin(unknown_theta)
+ax[0].scatter(unknown_x, unknown_y, color=colors[4], s=5, alpha=0.6, label='Unknown')
+
+# Set aspect ratio and limits
+ax[0].set_aspect('equal')
+ax[0].set_xlim(-2.2, 2.2)
+ax[0].set_ylim(-2.2, 2.2)
+ax[0].set_title('Satellite Orbit Distribution Around Earth', fontsize=14)
+ax[0].legend(loc='upper right')
+ax[0].axis('off')
+
+# Second subplot: Bar chart with percentages and counts
+bars = ax[1].bar(orbit_classes, percentages, color=colors)
+ax[1].set_ylabel('Percentage (%)', color='black', fontsize=12)
+ax[1].set_title('Orbit Classification Distribution', fontsize=14)
+ax[1].tick_params(axis='y', labelcolor='black')
+
+# Add count labels on top of bars
+for i, (bar, count) in enumerate(zip(bars, counts)):
+    height = bar.get_height()
+    ax[1].text(bar.get_x() + bar.get_width()/2., height + 0.5,
+               f'{count:,}', ha='center', va='bottom', fontweight='bold')
+
+# Add percentage labels inside bars
+for i, (bar, percentage) in enumerate(zip(bars, percentages)):
+    height = bar.get_height()
+    ax[1].text(bar.get_x() + bar.get_width()/2., height/2,
+               f'{percentage}%', ha='center', va='center', color='white', fontweight='bold')
+
+plt.tight_layout()
+plt.show()
