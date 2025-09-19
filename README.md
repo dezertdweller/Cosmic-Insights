@@ -18,16 +18,16 @@ This project analyzes **orbital congestion and conjunction risk** in **low Earth
 
 EDA
 ![eda](https://github.com/dezertdweller/Cosmic-Insights/blob/main/assets/eda.png)
-![eda](https://github.com/dezertdweller/Cosmic-Insights/blob/main/assets/eda-2.png)
+![eda-2](https://github.com/dezertdweller/Cosmic-Insights/blob/main/assets/eda-2.png)
 ---
 
 ## 🛠️ Tools & Approach
 
 * **Data**: TLEs (Elsets) + SATCAT metadata
-* **Tech**: Python (pandas, NumPy, SGP4), Tableau
-* **Workflow**: Ingestion → Cleaning → Orbital Density Analysis → Conjunction Risk Modeling
+* **Tech**: Python (pandas, NumPy, matplotlib, SGP4), Jupyter Notebook, Google Colab, Tableau
+* **Workflow**: Ingestion → Cleaning → Processing & Feature Engineering → Orbital Density Analysis → Conjunction Risk Modeling
 
-Conjunction Modeling
+**Conjunction Modeling**
 ![modeling](https://github.com/dezertdweller/Cosmic-Insights/blob/main/assets/conjunction.png)
 
 ---
